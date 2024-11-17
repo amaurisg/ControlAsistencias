@@ -1,0 +1,374 @@
+﻿/* Estilos generales */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    background-color: #F2F2F7;
+    background-image: url('../images/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #1C1C1E;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del header de inicio */
+.header-inicio {
+    text-align: center;
+    padding: 50px 20px 20px;
+}
+
+    .header-inicio .logo {
+        width: 80px;
+        margin-bottom: 10px;
+    }
+
+    .header-inicio h1 {
+        font-size: 40px;
+        font-weight: 700;
+        color: #FFFFFF;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: inline-block;
+    }
+
+/* Estilos para el sub-header */
+.sub-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+    .sub-header h2 {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+        color: #1C1C1E;
+        margin: 0;
+    }
+
+.btn-volver {
+    padding: 10px 15px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #007AFF;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+    .btn-volver::before {
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-left: 2px solid #007AFF;
+        border-bottom: 2px solid #007AFF;
+        transform: rotate(45deg);
+        margin-right: 8px;
+        margin-left: -5px;
+    }
+
+    .btn-volver:active {
+        opacity: 0.5;
+    }
+
+/* Contenedor del menú */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilos de los botones del menú */
+.btn-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 350px;
+    padding: 15px;
+    margin: 10px 0;
+    background: linear-gradient(to bottom, #ffffff, #e5e5ea);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(60, 64, 67, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: #007AFF;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-menu i {
+        font-size: 24px;
+        margin-right: 10px;
+        color: #007AFF;
+    }
+
+    .btn-menu span {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .btn-menu:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .btn-menu:active:after {
+        opacity: 1;
+    }
+
+    .btn-menu:active {
+        transform: scale(0.98);
+    }
+
+/* Estilos para el formulario */
+.form-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(60, 64, 67, 0.1);
+}
+
+    .form-container form {
+        display: flex;
+        flex-direction: column;
+    }
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #1C1C1E;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #D1D1D6;
+    border-radius: 10px;
+    background-color: #F2F2F7;
+}
+
+    form input:focus, form select:focus {
+        outline: none;
+        border-color: #007AFF;
+        background-color: #FFFFFF;
+    }
+
+.btn-guardar {
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: #007AFF;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+    .btn-guardar i {
+        margin-right: 10px;
+    }
+
+    .btn-guardar:hover {
+        background-color: #005FCC;
+    }
+
+/* Estilos para los botones de reporte */
+.reporte-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.btn-reporte {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 25px;
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: #34C759;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 80%;
+    max-width: 300px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+    .btn-reporte i {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+
+    .btn-reporte:hover {
+        background-color: #28A745;
+    }
+
+    .btn-reporte:nth-child(2) {
+        background-color: #FF9500;
+    }
+
+        .btn-reporte:nth-child(2):hover {
+            background-color: #CC7A00;
+        }
+
+/* Estilos para la tabla de asistencias */
+.tabla-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    overflow-x: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(60, 64, 67, 0.1);
+}
+
+#tabla-asistencias {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    #tabla-asistencias th, #tabla-asistencias td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #E5E5EA;
+    }
+
+    #tabla-asistencias th {
+        background-color: #F2F2F7;
+        color: #1C1C1E;
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    #tabla-asistencias tr:nth-child(even) {
+        background-color: #FAFAFA;
+    }
+
+    #tabla-asistencias tr:hover {
+        background-color: #F1F1F1;
+    }
+
+    #tabla-asistencias td {
+        color: #555;
+    }
+
+.estado-presente {
+    color: #34C759;
+    font-weight: 600;
+}
+
+.estado-ausente {
+    color: #FF3B30;
+    font-weight: 600;
+}
+
+.estado-excusa {
+    color: #FF9500;
+    font-weight: 600;
+}
+
+/* Estilos para íconos en los estados */
+.estado-presente::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.estado-ausente::before {
+    content: '\f00d';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.estado-excusa::before {
+    content: '\f017';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .header-inicio h1 {
+        font-size: 32px;
+    }
+
+    .btn-menu {
+        padding: 12px;
+    }
+
+        .btn-menu i {
+            font-size: 20px;
+        }
+
+        .btn-menu span {
+            font-size: 16px;
+        }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    form input, form select, form button {
+        font-size: 16px;
+    }
+
+    .btn-volver {
+        font-size: 15px;
+        padding: 8px 12px;
+    }
+
+    .sub-header h2 {
+        font-size: 20px;
+    }
+}
+
+/* Mejoras en la tipografía y espaciado */
+body, input, select, button {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

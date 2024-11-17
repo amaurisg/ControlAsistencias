@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Control de Asistencias</title>
+    <!-- Meta etiquetas para responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Enlace al manifiesto -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+    <!-- Fuente personalizada -->
+    <link rel="preload" href="fonts/Nunito-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <!-- Font Awesome para íconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery Timepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
+</head>
+<body>
+    <!-- Vista del Menú Principal -->
+    <div class="view active" id="vista-menu-principal">
+        <header class="header-inicio">
+            <img src="images/logo.jpg" alt="Logo" class="logo">
+            <h1>Control de Asistencias</h1>
+        </header>
+        <main class="contenido-principal">
+            <div class="menu-container">
+                <button class="btn-menu" onclick="mostrarVista('vista-registrar-asistencia')">
+                    <i class="fas fa-user-check"></i>
+                    <span>Registrar Asistencia</span>
+                </button>
+                <button class="btn-menu" onclick="mostrarVista('vista-total-asistencias')">
+                    <i class="fas fa-list"></i>
+                    <span>Ver Asistencias</span>
+                </button>
+                <button class="btn-menu" onclick="mostrarVista('vista-generar-reportes')">
+                    <i class="fas fa-file-export"></i>
+                    <span>Generar Reportes</span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vista de Registrar Asistencia Diaria -->
+    <div class="view" id="vista-registrar-asistencia">
+        <header class="sub-header">
+            <button class="btn-volver" onclick="mostrarVista('vista-menu-principal')">Volver</button>
+            <h2>Registrar Asistencia Diaria</h2>
+        </header>
+        <main>
+            <div class="form-container">
+                <form id="formAsistencia">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Personal:</label>
+                        <select id="nombre" required>
+                            <option value="">Seleccione un nombre</option>
+                            <!-- Las opciones se cargarán dinámicamente -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="horaLlegada">Hora de Llegada:</label>
+                        <input type="text" id="horaLlegada" class="timepicker">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="horaSalida">Hora de Salida:</label>
+                        <input type="text" id="horaSalida" class="timepicker">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Estado:</label>
+                        <select id="estado" required>
+                            <option value="">Seleccione un estado</option>
+                            <option value="Presente">Presente</option>
+                            <option value="Ausente">Ausente</option>
+                            <option value="Excusa">Excusa</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn-guardar" onclick="guardarAsistencia()">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vista de Ver Total de Asistencias -->
+    <div class="view" id="vista-total-asistencias">
+        <header class="sub-header">
+            <button class="btn-volver" onclick="mostrarVista('vista-menu-principal')">Volver</button>
+            <h2>Total de Asistencias</h2>
+        </header>
+        <main>
+            <div class="tabla-container">
+                <table id="tabla-asistencias">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Hora de Llegada</th>
+                            <th>Hora de Salida</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenido-total-asistencias">
+                        <!-- Los datos se cargarán dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vista de Generar Reportes -->
+    <div class="view" id="vista-generar-reportes">
+        <header class="sub-header">
+            <button class="btn-volver" onclick="mostrarVista('vista-menu-principal')">Volver</button>
+            <h2>Generar Reportes de Asistencia</h2>
+        </header>
+        <main>
+            <div class="reporte-container">
+                <button class="btn-reporte" onclick="generarReporte('PDF')">
+                    <i class="fas fa-file-pdf"></i> Exportar a PDF
+                </button>
+                <button class="btn-reporte" onclick="generarReporte('Excel')">
+                    <i class="fas fa-file-excel"></i> Exportar a Excel
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Incluir las bibliotecas externas (CDN) -->
+    <!-- jsPDF para generar PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- jsPDF AutoTable para tablas en PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <!-- SheetJS para generar Excel con estilos -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <!-- Incluir los scripts locales en el orden correcto -->
+    <script src="js/db.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
