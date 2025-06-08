@@ -3,7 +3,7 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
         navigator.serviceWorker.register('service-worker.js')
             .then(function (registration) {
-                console.log('Service Worker registrado con éxito:', registration.scope);
+                console.log('Service Worker registrado con Ã©xito:', registration.scope);
             }, function (err) {
                 console.log('Error al registrar el Service Worker:', err);
             });
@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
 });
 
-// Función para mostrar y ocultar vistas
+// FunciÃ³n para mostrar y ocultar vistas
 function mostrarVista(idVista) {
     // Ocultar todas las vistas
     const vistas = document.querySelectorAll('.view');
@@ -37,7 +37,7 @@ function mostrarVista(idVista) {
     vistaSeleccionada.classList.add('active');
     vistaSeleccionada.style.display = 'block';
 
-    // Si es necesario, cargar contenido específico
+    // Si es necesario, cargar contenido especÃ­fico
     if (idVista === 'vista-registrar-asistencia') {
         mostrarFormularioAsistencia();
     } else if (idVista === 'vista-total-asistencias') {
@@ -45,7 +45,7 @@ function mostrarVista(idVista) {
     }
 }
 
-// Función para mostrar el formulario de asistencia
+// FunciÃ³n para mostrar el formulario de asistencia
 function mostrarFormularioAsistencia() {
     // Limpiar el formulario
     document.getElementById('formAsistencia').reset();
@@ -53,7 +53,7 @@ function mostrarFormularioAsistencia() {
     cargarNombresPersonal();
 }
 
-// Función para guardar una asistencia en la base de datos
+// FunciÃ³n para guardar una asistencia en la base de datos
 function guardarAsistencia() {
     const nombre = document.getElementById('nombre').value;
     const fecha = document.getElementById('fecha').value;
@@ -93,7 +93,7 @@ function guardarAsistencia() {
     };
 }
 
-// Función para convertir hora en formato de 12 horas a 24 horas
+// FunciÃ³n para convertir hora en formato de 12 horas a 24 horas
 function convertirHoraA24(hora12) {
     if (!hora12) return null;
     const [time, modifier] = hora12.split(' ');
@@ -110,7 +110,7 @@ function convertirHoraA24(hora12) {
     return `${hours.toString().padStart(2, '0')}:${minutes}`;
 }
 
-// Función para convertir hora en formato de 24 horas a 12 horas con AM/PM
+// FunciÃ³n para convertir hora en formato de 24 horas a 12 horas con AM/PM
 function convertirHoraA12(hora24) {
     if (!hora24) return '-';
     let [hours, minutes] = hora24.split(':');
@@ -122,7 +122,7 @@ function convertirHoraA12(hora24) {
     return `${hours}:${minutes} ${modifier}`;
 }
 
-// Función para mostrar el total de asistencias registradas
+// FunciÃ³n para mostrar el total de asistencias registradas
 function mostrarTotalAsistencias() {
     const tbody = document.getElementById('contenido-total-asistencias');
     tbody.innerHTML = ''; // Limpiar contenido anterior
@@ -133,6 +133,10 @@ function mostrarTotalAsistencias() {
 
     request.onsuccess = function (event) {
         const datos = event.target.result;
+        if (datos.length === 0) {
+            alert("No hay asistencias registradas para exportar.");
+            return;
+        }
         if (datos.length > 0) {
             datos.forEach(item => {
                 const tr = document.createElement('tr');
@@ -160,7 +164,7 @@ function mostrarTotalAsistencias() {
                 // Estado
                 const tdEstado = document.createElement('td');
                 tdEstado.textContent = item.estado;
-                // Asignar clase según el estado
+                // Asignar clase segÃºn el estado
                 if (item.estado === 'Presente') {
                     tdEstado.classList.add('estado-presente');
                 } else if (item.estado === 'Ausente') {
@@ -184,14 +188,14 @@ function mostrarTotalAsistencias() {
     };
 }
 
-// Función para formatear la fecha
+// FunciÃ³n para formatear la fecha
 function formatearFecha(fecha) {
     const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
     const fechaObj = new Date(fecha);
     return fechaObj.toLocaleDateString('es-ES', opciones);
 }
 
-// Función para generar reportes en PDF o Excel
+// FunciÃ³n para generar reportes en PDF o Excel
 function generarReporte(formato) {
     const transaction = db.transaction(['asistencias'], 'readonly');
     const objectStore = transaction.objectStore('asistencias');
@@ -199,13 +203,17 @@ function generarReporte(formato) {
 
     request.onsuccess = function (event) {
         const datos = event.target.result;
+        if (datos.length === 0) {
+            alert("No hay asistencias registradas para exportar.");
+            return;
+        }
 
         if (formato === 'PDF') {
             // Generar PDF con jsPDF
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Agregar título
+            // Agregar tÃ­tulo
             doc.setFontSize(18);
             doc.setTextColor(40);
             doc.text('Reporte de Asistencias', 105, 20, null, null, 'center');
@@ -281,7 +289,7 @@ function generarReporte(formato) {
             ];
             ws['!cols'] = columnWidths;
 
-            // Añadir la hoja al libro
+            // AÃ±adir la hoja al libro
             XLSX.utils.book_append_sheet(wb, ws, 'Asistencias');
 
             // Guardar el archivo Excel
@@ -290,7 +298,7 @@ function generarReporte(formato) {
     };
 }
 
-// Mostrar la vista del menú principal al cargar la página
+// Mostrar la vista del menÃº principal al cargar la pÃ¡gina
 window.onload = function () {
     mostrarVista('vista-menu-principal');
 };

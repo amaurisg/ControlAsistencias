@@ -21,6 +21,7 @@ Tabla de Contenidos
     3. Generar Reportes
   *Instalación como Aplicación Móvil (PWA)
   *Personalización
+  *Pruebas
   *Contribuciones
   *Licencia
   *Contacto
@@ -139,6 +140,9 @@ Asegúrate de que las rutas en el código sean correctas.
 Colores y Estilos:
 
 Edita el archivo css/styles.css para personalizar colores, fuentes y otros estilos según tus preferencias.
+
+Pruebas
+Para ejecutar las pruebas unitarias primero instala las dependencias con `npm install` y luego ejecuta `npm test`.
 Contribuciones
 ¡Las contribuciones son bienvenidas! Si deseas mejorar esta aplicación:
 
