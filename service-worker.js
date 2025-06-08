@@ -1,4 +1,4 @@
-// Nombre de la caché
+// Nombre de la cache
 const CACHE_NAME = 'control-asistencias-cache-v1';
 
 // Archivos a cachear
@@ -22,7 +22,7 @@ const urlsToCache = [
     'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js'
 ];
 
-// Evento de instalación del Service Worker
+// Evento de instalaciÃ³n del Service Worker
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME)
@@ -33,7 +33,7 @@ self.addEventListener('install', function (event) {
     );
 });
 
-// Evento de activación para limpiar cachés antiguas
+// Evento de activaciÃ³n para limpiar cachÃ©s antiguas
 self.addEventListener('activate', function (event) {
     const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(

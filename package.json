@@ -1,0 +1,12 @@
+{
+  "name": "control-asistencias",
+  "version": "1.0.0",
+  "description": "Aplicación de Control de Asistencias",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
