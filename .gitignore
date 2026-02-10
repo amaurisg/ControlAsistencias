@@ -1,0 +1,25 @@
+# Node / Vite
+node_modules/
+dist/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+# .NET build artifacts (legacy files in repo)
+bin/
+obj/
+*.dll
+*.pdb
+*.cache
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Binary assets (for repos with no-binary policy)
+*.jpg
+*.jpeg
+*.png
+*.ico
+*.ttf
